@@ -1,0 +1,31 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-secret:
+            client-id:
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - profile
+
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sso_auth
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: root123
+  jpa:
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      mode: never
+
+app:
+  tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
+  tokenExpirationMsec: 864000000
+  authorizedRedirectUris:
+    - http://localhost:3000/oauth2/redirect
